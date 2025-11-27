@@ -442,6 +442,61 @@
         "custom_class": "sf-home__iconbox",
         "animations": "inherit"
       }
+    },
+    "product_tabs_de4Nq8": {
+      "type": "product-tabs",
+      "blocks": {
+        "tab_JVGH9j": {
+          "type": "tab",
+          "settings": {
+            "title": "القسم الأول",
+            "collection": ""
+          }
+        },
+        "tab_6ckeNz": {
+          "type": "tab",
+          "settings": {
+            "title": "القسم الثاني",
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_JVGH9j",
+        "tab_6ckeNz"
+      ],
+      "name": "Product tabs",
+      "settings": {
+        "heading": "أقسام المنتجات",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "color_scheme": "",
+        "tab_header": "horizontal",
+        "limit": 4,
+        "show_button": false,
+        "button_type": "link",
+        "button_label": "View all",
+        "button_style": "m-button--primary",
+        "button_size": "",
+        "pcard_layout": "",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "items_per_row": 4,
+        "item_gap": 30,
+        "enable_slider": false,
+        "show_navigation": true,
+        "show_pagination": false,
+        "mobile_disable_slider": false,
+        "use_scroll_mobile": true,
+        "item_gap_mobile": 16,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": "",
+        "animations": "inherit"
+      }
     }
   },
   "order": [
@@ -453,6 +508,7 @@
     "be41f684-2b48-46f6-8074-b843366f3707",
     "e27c015c-9abe-480c-a685-fe65151b9ca3",
     "aa42791c-b95f-40dd-a10c-efef61318e73",
-    "16225125199f82d8fe"
+    "16225125199f82d8fe",
+    "product_tabs_de4Nq8"
   ]
 }
