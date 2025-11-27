@@ -13,6 +13,8 @@
     "favicon": "shopify://shop_images/shopping-bag.png",
     "blur_strength": 12,
     "glass_blur_strength": 3,
+    "page_transition_type": "scale",
+    "page_motion_style": "scale",
     "container_width": 1170,
     "container_fluid_width": 1620,
     "container_fluid_offset": 65,
