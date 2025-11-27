@@ -111,12 +111,12 @@
         --bg-black: 0,0,0;
         --bg-white: 255,255,255;
         /* إعدادات المظهر الداكن/الفاتح واللمسة الخضراء مع طابع iOS الزجاجي */
-        --accent-color: #27d36b;
-        --accent-strong: #22c061;
+        --accent-color: {{ settings.accent_color | default: '#30e060' }};
+        --accent-strong: {{ settings.accent_color | default: '#30e060' }};
         --dark-background: #05070b;
-        --dark-surface: #0f1118;
-        --dark-surface-strong: #131622;
-        --light-background: #f8f9fb;
+        --dark-surface: #10131a;
+        --dark-surface-strong: #151923;
+        --light-background: #f7f7fb;
         --light-surface: #ffffff;
         --glass-bg-light: rgba(255, 255, 255, 0.65);
         --glass-bg-dark: rgba(255, 255, 255, 0.08);

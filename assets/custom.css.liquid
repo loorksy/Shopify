@@ -482,3 +482,151 @@ hr,
 [dir="rtl"] .m-header__container {
   flex-direction: row-reverse;
 }
+
+/* تصميم داشبورد بثلاثة أعمدة مع تأثير زجاجي داكن */
+.dashboard-shell {
+  --dash-bg: #05070b;
+  --dash-surface: rgba(16, 19, 26, 0.72);
+  --dash-surface-strong: rgba(21, 25, 35, 0.76);
+  --dash-text: #f7f8fb;
+  --dash-muted: #a5b1c7;
+  --dash-accent: var(--accent-color, #30e060);
+  color: var(--dash-text);
+  padding: 24px;
+  background: var(--dash-bg);
+}
+
+.dashboard-shell__inner {
+  display: grid;
+  grid-template-columns: 260px minmax(240px, 320px) 1fr;
+  gap: 18px;
+}
+
+.dashboard-shell__nav,
+.dashboard-shell__filters,
+.dashboard-shell__empty {
+  border-radius: var(--dashboard-radius, 18px);
+  background: var(--dash-surface);
+  padding: 18px;
+  color: var(--dash-text);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-shell__nav.is-blurred,
+.dashboard-shell__filters.is-blurred,
+.dashboard-shell__empty.is-blurred,
+.dashboard-card.is-blurred {
+  backdrop-filter: blur(var(--dashboard-blur, 10px));
+  -webkit-backdrop-filter: blur(var(--dashboard-blur, 10px));
+}
+
+.dashboard-shell__brand-title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.dashboard-shell__brand-sub {
+  color: var(--dash-muted);
+  font-size: 14px;
+}
+
+.dashboard-shell__nav-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.dashboard-shell__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: calc(var(--dashboard-radius, 18px) - 6px);
+  color: var(--dash-text);
+  background: var(--dash-surface-strong);
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.dashboard-shell__nav-link:hover {
+  background: rgba(48, 224, 96, 0.14);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.dashboard-shell__filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dashboard-shell__filters-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-shell__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.dashboard-shell__muted {
+  color: var(--dash-muted);
+  font-size: 14px;
+}
+
+.dashboard-shell__custom-filter {
+  padding: 12px;
+  border-radius: calc(var(--dashboard-radius, 18px) - 8px);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.dashboard-shell__content {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.dashboard-shell__grid {
+  background: transparent;
+  border-radius: var(--dashboard-radius, 18px);
+}
+
+.dashboard-shell__products {
+  display: grid;
+  gap: var(--dashboard-gap, 18px);
+  grid-template-columns: repeat(var(--dashboard-cols-desktop, 4), minmax(0, 1fr));
+}
+
+@media (max-width: 1024px) {
+  .dashboard-shell__inner {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-shell__content {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-shell__products {
+    grid-template-columns: repeat(var(--dashboard-cols-mobile, 1), minmax(0, 1fr));
+  }
+}
+
+.dashboard-card {
+  border-radius: calc(var(--dashboard-radius, 18px) - 4px);
+  overflow: hidden;
+  background: var(--dash-surface-strong);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  transition: transform 180ms ease;
+}
+
+.dashboard-shell__pagination {
+  margin-top: 16px;
+  text-align: center;
+}

@@ -180,9 +180,18 @@
         "id": "page_transition_type",
         "label": "نوع حركة الانتقال",
         "options": [
-          { "value": "fade", "label": "تلاشي" },
-          { "value": "slide", "label": "انزلاق" },
-          { "value": "scale", "label": "تكبير/تصغير" }
+          {
+            "value": "fade",
+            "label": "تلاشي"
+          },
+          {
+            "value": "slide",
+            "label": "انزلاق"
+          },
+          {
+            "value": "scale",
+            "label": "تكبير/تصغير"
+          }
         ],
         "default": "fade"
       },
@@ -198,9 +207,18 @@
         "id": "page_motion_style",
         "label": "نوع حركة الانتقال",
         "options": [
-          { "value": "fade", "label": "تلاشي" },
-          { "value": "slide", "label": "انزلاق" },
-          { "value": "scale", "label": "تكبير خفيف" }
+          {
+            "value": "fade",
+            "label": "تلاشي"
+          },
+          {
+            "value": "slide",
+            "label": "انزلاق"
+          },
+          {
+            "value": "scale",
+            "label": "تكبير خفيف"
+          }
         ],
         "default": "fade"
       }
@@ -2849,6 +2867,98 @@
         "id": "currency_code_enabled",
         "label": "Show currency codes",
         "default": false
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "أسلوب المتجر",
+    "settings": [
+      {
+        "id": "color_mode_default",
+        "type": "select",
+        "label": "وضع الألوان الافتراضي",
+        "options": [
+          {
+            "value": "dark",
+            "label": "الوضع الداكن"
+          },
+          {
+            "value": "light",
+            "label": "الوضع الفاتح"
+          }
+        ],
+        "default": "dark"
+      },
+      {
+        "id": "accent_color",
+        "type": "color",
+        "label": "لون التمييز الرئيسي",
+        "default": "#30e060"
+      },
+      {
+        "id": "global_radius",
+        "type": "range",
+        "label": "انحناء الزوايا العامة",
+        "min": 4,
+        "max": 32,
+        "step": 1,
+        "default": 18
+      },
+      {
+        "id": "enable_soft_blur",
+        "type": "checkbox",
+        "label": "تفعيل ضبابية ناعمة للألواح",
+        "default": true
+      },
+      {
+        "id": "blur_strength",
+        "type": "range",
+        "label": "قوة الضبابية",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "default": 10
+      }
+    ]
+  },
+  {
+    "name": "layout",
+    "label": "تخطيط الواجهة",
+    "settings": [
+      {
+        "id": "enable_left_sidebar",
+        "type": "checkbox",
+        "label": "إظهار الشريط الجانبي الأيسر (القائمة الرئيسية)",
+        "default": true
+      },
+      {
+        "id": "enable_filter_sidebar",
+        "type": "checkbox",
+        "label": "إظهار لوحة الفلاتر في صفحة المنتجات",
+        "default": true
+      },
+      {
+        "id": "sticky_sidebars",
+        "type": "checkbox",
+        "label": "تثبيت الأشرطة الجانبية أثناء التمرير",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "typography",
+    "label": "الخطوط",
+    "settings": [
+      {
+        "id": "heading_font_family",
+        "type": "font_picker",
+        "label": "خط العناوين"
+      },
+      {
+        "id": "body_font_family",
+        "type": "font_picker",
+        "label": "خط النصوص"
       }
     ]
   }

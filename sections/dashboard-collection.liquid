@@ -1,0 +1,204 @@
+{% liquid
+  assign blur_enabled = settings.enable_soft_blur | default: settings.enable_blur_effect | default: settings.enable_glass_blur
+  assign radius_value = settings.global_radius | default: settings.global_border_radius | default: 18
+  assign blur_value = settings.blur_strength | default: settings.glass_blur_strength | default: 10
+  assign grid_cols_desktop = section.settings.grid_columns_desktop | default: 4
+  assign grid_cols_mobile = section.settings.grid_columns_mobile | default: 1
+%}
+<section class="dashboard-shell" data-section-id="{{ section.id }}" style="--dashboard-radius: {{ radius_value }}px; --dashboard-blur: {{ blur_value }}px; --dashboard-cols-desktop: {{ grid_cols_desktop }}; --dashboard-cols-mobile: {{ grid_cols_mobile }};">
+  <div class="dashboard-shell__inner">
+    {% if section.settings.show_left_nav %}
+      <aside class="dashboard-shell__nav glass-panel{% if blur_enabled %} is-blurred{% endif %}">
+        <div class="dashboard-shell__brand">
+          <span class="dashboard-shell__brand-title">{{ shop.name }}</span>
+          <span class="dashboard-shell__brand-sub">{{ 'collections.general.title' | t }}</span>
+        </div>
+        <nav class="dashboard-shell__nav-list" aria-label="القائمة الجانبية">
+          {% for block in section.blocks %}
+            {% if block.type == 'nav_item' %}
+              <a class="dashboard-shell__nav-link" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+                {% if block.settings.icon != blank %}
+                  <span class="dashboard-shell__nav-icon">{{ block.settings.icon }}</span>
+                {% endif %}
+                <span>{{ block.settings.label }}</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </nav>
+      </aside>
+    {% endif %}
+
+    <div class="dashboard-shell__content">
+      {% if section.settings.show_filter_sidebar %}
+        <aside class="dashboard-shell__filters glass-panel{% if blur_enabled %} is-blurred{% endif %}">
+          <div class="dashboard-shell__filters-head">
+            <h3 class="dashboard-shell__title">{{ 'collections.filters.title' | t }}</h3>
+            {% if section.settings.show_sorting %}
+              {%- render 'collection-page-toolbar', section: section, results: collection, animated: false, animation_effect: 'none' -%}
+            {% endif %}
+          </div>
+          {% if collection.filters and collection.filters.size > 0 %}
+            {%- render 'collection-filters-facets', results: collection, animated: false, animation_effect: 'none' -%}
+          {% else %}
+            <p class="dashboard-shell__muted">{{ 'collections.filters.empty' | t }}</p>
+          {% endif %}
+          {% for block in section.blocks %}
+            {% if block.type == 'filter_group' %}
+              <div class="dashboard-shell__custom-filter" {{ block.shopify_attributes }}>
+                <div class="dashboard-shell__custom-filter-title">{{ block.settings.title }}</div>
+                <div class="dashboard-shell__muted">{{ block.settings.source | capitalize }}</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </aside>
+      {% endif %}
+
+      <div class="dashboard-shell__grid">
+        {% paginate collection.products by section.settings.pagination_limit %}
+          {% if collection.products.size == 0 %}
+            <div class="dashboard-shell__empty glass-panel{% if blur_enabled %} is-blurred{% endif %}">
+              <p>{{ 'collections.general.no_matches' | t }}</p>
+            </div>
+          {% else %}
+            <div class="dashboard-shell__products" data-total-pages="{{ paginate.pages }}" data-product-container>
+              {% for product in collection.products %}
+                <article class="dashboard-card" data-product-card>
+                  {% liquid
+                    case settings.pcard_layout
+                      when '1'
+                        render 'product-card-1', product: product, section: section, index: forloop.index
+                      when '2'
+                        render 'product-card-2', product: product, section: section, index: forloop.index
+                      when '3'
+                        render 'product-card-3', product: product, section: section, index: forloop.index
+                      when '4'
+                        render 'product-card-4', product: product, section: section, index: forloop.index
+                      when '5'
+                        render 'product-card-5', product: product, section: section, index: forloop.index
+                      else
+                        render 'product-card-1', product: product, section: section, index: forloop.index
+                    endcase
+                  %}
+                </article>
+              {% endfor %}
+            </div>
+            {% if paginate.pages > 1 %}
+              <div class="dashboard-shell__pagination">
+                {%- render 'pagination', paginate: paginate, anchor: '' -%}
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endpaginate %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "واجهة المتجر بنمط الداشبورد",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_left_nav",
+      "label": "إظهار لوحة التنقل اليسرى",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filter_sidebar",
+      "label": "إظهار لوحة الفلاتر",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sorting",
+      "label": "إظهار خيارات الترتيب",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "grid_columns_desktop",
+      "label": "عدد أعمدة المنتجات (كمبيوتر)",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "grid_columns_mobile",
+      "label": "عدد أعمدة المنتجات (جوال)",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "pagination_limit",
+      "label": "عدد المنتجات لكل صفحة",
+      "min": 6,
+      "max": 48,
+      "step": 6,
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "عنصر قائمة جانبية",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "الأيقونة (نص قصير)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "النص"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "الرابط"
+        }
+      ]
+    },
+    {
+      "type": "filter_group",
+      "name": "مجموعة فلتر",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "عنوان الفلتر"
+        },
+        {
+          "type": "select",
+          "id": "source",
+          "label": "مصدر الفلتر",
+          "options": [
+            { "value": "price", "label": "السعر" },
+            { "value": "vendor", "label": "العلامة التجارية" },
+            { "value": "type", "label": "نوع المنتج" },
+            { "value": "tag", "label": "وسم" },
+            { "value": "rating", "label": "التقييم" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "واجهة داشبورد المنتجات",
+      "blocks": [
+        {"type": "nav_item", "settings": {"icon": "🏠", "label": "الرئيسية"}},
+        {"type": "nav_item", "settings": {"icon": "⭐", "label": "الأكثر مبيعاً"}},
+        {"type": "filter_group", "settings": {"title": "السعر", "source": "price"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
