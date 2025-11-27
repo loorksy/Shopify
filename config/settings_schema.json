@@ -8,112 +8,207 @@
     "theme_support_url": "https://enfitah.com/help/"
   },
   {
-    "name": "Theme active",
+    "name": "تفعيل الثيم",
     "settings": [
       {
         "type": "paragraph",
-        "content": "Start your business journey with [Enfitah Shopify Theme](https://enfitah.com)"
+        "content": "ابدأ رحلتك التجارية مع [ثيم انفتيح](https://enfitah.com)"
       },
       {
         "type": "text",
         "id": "purchase_code",
-        "label": "Purchase code",
-        "placeholder": "Paste your activation code"
+        "label": "رمز الشراء",
+        "placeholder": "ألصق رمز التفعيل هنا"
       },
       {
         "type": "paragraph",
-        "content": "[Buy a new license?](https://enfitah.com/pricing)"
+        "content": "[شراء ترخيص جديد؟](https://enfitah.com/pricing)"
       },
       {
         "type": "paragraph",
-        "content": "Use Enfitah and explore all the tools and services you need to start, run, and grow your business."
+        "content": "استخدم ثيم انفتيح واستكشف كل الأدوات والخدمات التي تحتاجها لبدء وتشغيل وتنمية متجرك."
       }
     ]
   },
   {
-    "name": "Dear customers!",
+    "name": "أعزاؤنا العملاء",
     "settings": [
       {
         "type": "paragraph",
-        "content": "[Enfitah Team](https://Enfitah.com/) is an experienced web development team that loves to deliver impressive and well-designed Arabic Shopify themes. All of our themes are easy to install and customize, so you can start your own online store in just a few minutes."
+        "content": "[فريق انفتيح](https://Enfitah.com/) فريق تطوير متمرس يحب تقديم ثيمات شوبيفاي عربية مبهرة ومتقنة. جميع ثيماتنا سهلة التثبيت والتخصيص، لتبدأ متجرك في دقائق."
       },
       {
         "type": "paragraph",
-        "content": "If you are facing a problems with installation, please visit our [documentation page](https://enfitah.com/help) to find answers to many of the commonly asked questions. You can also watch our tutorials on [Youtube](https://youtube.com/@enfitah)."
+        "content": "إذا واجهت أي مشاكل في التثبيت، تفضل بزيارة [صفحة الشروحات](https://enfitah.com/help) للعثور على إجابات للأسئلة الشائعة، ويمكنك مشاهدة شروحاتنا على [يوتيوب](https://youtube.com/@enfitah)."
       }
     ]
   },
   {
-    "name": "General settings",
+    "name": "الإعدادات العامة",
     "settings": [
       {
         "type": "header",
-        "content": "Favicon"
+        "content": "أيقونة المتصفح"
       },
       {
         "type": "checkbox",
         "id": "use_favicon",
-        "label": "Use favicon icon (32px x 32px)",
+        "label": "تفعيل أيقونة فافيكون (32×32)",
         "default": true
       },
       {
         "type": "image_picker",
         "id": "favicon",
-        "label": "Image favicon",
-        "info": "Will be scaled down to 32 x 32px"
+        "label": "صورة الفافيكون",
+        "info": "سيتم تصغيرها إلى 32×32 بكسل"
       },
       {
         "type": "header",
-        "content": "Ajax \"ADD TO CART\""
+        "content": "زر الإضافة للسلة بخاصية آجاكس"
       },
       {
         "type": "checkbox",
         "id": "use_ajax_atc",
-        "label": "Enable ajax \"ADD TO CART\"",
+        "label": "تفعيل زر \"أضف للسلة\" بالآجاكس",
         "default": true
       },
       {
         "type": "header",
-        "content": "Scroll to top button"
+        "content": "زر الصعود للأعلى"
       },
       {
         "type": "checkbox",
         "id": "show_scroll_top_button",
-        "label": "Show scroll to top button",
+        "label": "إظهار زر الصعود لأعلى الصفحة",
         "default": true,
-        "info": "[Watch tutorial](https://enfitah.com/help)"
+        "info": "[مشاهدة شرح](https://enfitah.com/help)"
       },
       {
         "type": "header",
-        "content": "Right-to-Left support"
+        "content": "دعم الاتجاه من اليمين لليسار"
       },
       {
         "type": "checkbox",
         "id": "enable_rtl",
-        "label": "Enable RTL",
+        "label": "تفعيل العرض من اليمين لليسار",
         "default": true,
-        "info": "[Watch tutorial](https://enfitah.com/help)"
+        "info": "[مشاهدة شرح](https://enfitah.com/help)"
       },
       {
         "type": "text",
         "id": "language_support_rtl",
-        "label": "Languages support RTL",
+        "label": "اللغات الداعمة لـ RTL",
         "default": "he,ar",
-        "info": "Enter ISO language code, separate by comma. Leave blank to enable for all languages. [Check ISO language code](https://www.loc.gov/standards/iso639-2/php/code_list.php)"
+        "info": "أدخل رموز اللغات بنظام ISO مفصولة بفاصلة. اتركه فارغًا لتفعيل كل اللغات. [قائمة رموز ISO](https://www.loc.gov/standards/iso639-2/php/code_list.php)"
+      },
+      {
+        "type": "header",
+        "content": "المظهر الاحترافي"
+      },
+      {
+        "type": "range",
+        "id": "global_radius",
+        "label": "انحناء الزوايا العامة",
+        "default": 16,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "info": "يتحكم في انحناء زوايا صور المنتجات، الكروت، الحاويات، الأزرار، الملصقات والحاويات داخل الأقسام."
+      },
+      {
+        "type": "range",
+        "id": "global_border_radius",
+        "label": "انحناء الزوايا العامة",
+        "default": 18,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "info": "يتحكم في انحناء زوايا صور المنتجات، الكروت، الحاويات، الأزرار، والخلفيات المستطيلة داخل الأقسام."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_blur_effect",
+        "label": "تفعيل تأثير الضبابية (Blur)",
+        "default": true,
+        "info": "يضيف طبقة زجاجية ناعمة للحاويات والقوائم عند التفعيل."
+      },
+      {
+        "type": "range",
+        "id": "blur_strength",
+        "label": "قوة تأثير الضبابية",
+        "default": 14,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_glass_blur",
+        "label": "تفعيل تأثير الضبابية (Blur)",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "glass_blur_strength",
+        "label": "قوة تأثير الضبابية",
+        "default": 14,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_page_transitions",
+        "label": "تفعيل أنيميشن الانتقال بين الصفحات",
+        "default": true,
+        "info": "يضيف حركة دخول للمحتوى الرئيسي عند تحميل الصفحة لإحساس سلس."
+      },
+      {
+        "type": "select",
+        "id": "page_transition_type",
+        "label": "نوع حركة الانتقال",
+        "options": [
+          { "value": "fade", "label": "تلاشي" },
+          { "value": "slide", "label": "انزلاق" },
+          { "value": "scale", "label": "تكبير/تصغير" }
+        ],
+        "default": "fade"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_page_motion",
+        "label": "تفعيل أنيميشن الانتقال بين الصفحات",
+        "default": true,
+        "info": "يحرك المحتوى الرئيسي عند التحميل ليمنح تجربة انتقال ناعمة."
+      },
+      {
+        "type": "select",
+        "id": "page_motion_style",
+        "label": "نوع حركة الانتقال",
+        "options": [
+          { "value": "fade", "label": "تلاشي" },
+          { "value": "slide", "label": "انزلاق" },
+          { "value": "scale", "label": "تكبير خفيف" }
+        ],
+        "default": "fade"
       }
     ]
   },
   {
-    "name": "Layout settings",
+    "name": "إعدادات التخطيط",
     "settings": [
       {
         "type": "header",
-        "content": "Fixed width container"
+        "content": "حاوية بعرض ثابت"
       },
       {
         "type": "range",
         "id": "container_width",
-        "label": "Container width",
+        "label": "عرض الحاوية",
         "default": 1280,
         "min": 1100,
         "max": 1900,
@@ -122,13 +217,13 @@
       },
       {
         "type": "header",
-        "content": "Fluid container",
-        "info": "A section with \"Fluid container\" will take-up the complete width of the viewport and will expand or shrink when ever the viewport is resized."
+        "content": "حاوية مرنة",
+        "info": "القسم ذو \"الحاوية المرنة\" يمتد على عرض الشاشة بالكامل ويتغير حجمه مع تغيير عرض المتصفح."
       },
       {
         "type": "range",
         "id": "container_fluid_width",
-        "label": "Container max-width",
+        "label": "أقصى عرض للحاوية",
         "default": 1620,
         "min": 1280,
         "max": 2560,
@@ -138,7 +233,7 @@
       {
         "type": "range",
         "id": "container_fluid_offset",
-        "label": "Margin left & right",
+        "label": "هوامش جانبية",
         "default": 95,
         "min": 0,
         "max": 150,
@@ -148,87 +243,87 @@
     ]
   },
   {
-    "name": "Typography",
+    "name": "الخطوط",
     "settings": [
       {
         "type": "paragraph",
-        "content": "[Watch tutorial](https://enfitah.com/help)"
+        "content": "[مشاهدة شرح](https://enfitah.com/help)"
       },
       {
         "type": "header",
-        "content": "BODY TEXT"
+        "content": "نصوص الجسم"
       },
       {
         "type": "font_picker",
         "id": "type_base_font",
-        "label": "Font",
+        "label": "الخط",
         "default": "helvetica_n4"
       },
       {
         "type": "checkbox",
         "id": "use_custom_font_body",
-        "label": "Use custom font",
+        "label": "استخدام خط مخصص",
         "default": false
       },
       {
         "type": "header",
-        "content": "Custom font for Body text"
+        "content": "خط مخصص للنصوص"
       },
       {
         "id": "custom_body_font",
         "type": "textarea",
-        "label": "Font URL",
+        "label": "رابط الخط",
         "placeholder": "https://cdn.shopify.com/s/files/1/0075/1288/3285/files/roboto.woff2@400",
-        "info": "Format: Link_to_font@font_weight"
+        "info": "الصيغة: رابط_الخط@وزن_الخط"
       },
       {
         "id": "custom_body_weight",
         "type": "select",
-        "label": "Default font weight",
+        "label": "وزن الخط الافتراضي",
         "default": "400",
         "options": [
           {
             "value": "100",
-            "label": "Thin 100"
+            "label": "رفيع 100"
           },
           {
             "value": "200",
-            "label": "Extra-light 200"
+            "label": "خفيف جدًا 200"
           },
           {
             "value": "300",
-            "label": "Light 300"
+            "label": "خفيف 300"
           },
           {
             "value": "400",
-            "label": "Regular 400"
+            "label": "عادي 400"
           },
           {
             "value": "500",
-            "label": "Medium 500"
+            "label": "متوسط 500"
           },
           {
             "value": "600",
-            "label": "Semi-bold 600"
+            "label": "سميك 600"
           },
           {
             "value": "700",
-            "label": "Bold 700"
+            "label": "عريض 700"
           },
           {
             "value": "800",
-            "label": "Extra-bold 800"
+            "label": "عريض جدًا 800"
           },
           {
             "value": "900",
-            "label": "Black 900"
+            "label": "أسود 900"
           }
         ]
       },
       {
         "type": "range",
         "id": "type_base_size",
-        "label": "Base size",
+        "label": "حجم النص الأساسي",
         "default": 16,
         "min": 14,
         "max": 20,
@@ -238,7 +333,7 @@
       {
         "type": "range",
         "id": "type_base_line_height",
-        "label": "Line height",
+        "label": "ارتفاع السطر",
         "default": 28,
         "min": 14,
         "max": 100,
@@ -247,83 +342,83 @@
       },
       {
         "type": "header",
-        "content": "HEADINGS"
+        "content": "العناوين"
       },
       {
         "type": "font_picker",
         "id": "type_header_font",
-        "label": "Font",
+        "label": "الخط",
         "default": "helvetica_n7"
       },
       {
         "type": "checkbox",
         "id": "use_custom_font_heading",
-        "label": "Use custom font",
+        "label": "استخدام خط مخصص للعناوين",
         "default": false
       },
       {
         "type": "header",
-        "content": "Custom font for Headings"
+        "content": "خط مخصص للعناوين"
       },
       {
         "type": "paragraph",
-        "content": "Allow multiple links, each link in a new line. Please upload to [Shopify files](/admin/settings/files) and paste link here. These formats TTF, OTF, WOFF & WOFF2 are supported."
+        "content": "يمكن إضافة عدة روابط (كل رابط في سطر جديد). يُفضّل رفع الخطوط عبر [ملفات شوبيفاي](/admin/settings/files) ولصق الرابط هنا. الصيغ المدعومة: TTF وOTF وWOFF وWOFF2."
       },
       {
         "id": "custom_heading_font",
         "type": "textarea",
-        "label": "Font file URLS",
+        "label": "روابط ملفات الخطوط",
         "placeholder": "https://cdn.shopify.com/s/files/1/0075/1288/3285/files/roboto.woff2@400",
-        "info": "Format: Link_to_font@font_weight"
+        "info": "الصيغة: رابط_الخط@وزن_الخط"
       },
       {
         "id": "custom_heading_weight",
         "type": "select",
-        "label": "Default font weight",
+        "label": "وزن الخط الافتراضي",
         "default": "400",
         "options": [
           {
             "value": "100",
-            "label": "Thin 100"
+            "label": "رفيع 100"
           },
           {
             "value": "200",
-            "label": "Extra-light 200"
+            "label": "خفيف جدًا 200"
           },
           {
             "value": "300",
-            "label": "Light 300"
+            "label": "خفيف 300"
           },
           {
             "value": "400",
-            "label": "Regular 400"
+            "label": "عادي 400"
           },
           {
             "value": "500",
-            "label": "Medium 500"
+            "label": "متوسط 500"
           },
           {
             "value": "600",
-            "label": "Semi-bold 600"
+            "label": "سميك 600"
           },
           {
             "value": "700",
-            "label": "Bold 700"
+            "label": "عريض 700"
           },
           {
             "value": "800",
-            "label": "Extra-bold 800"
+            "label": "عريض جدًا 800"
           },
           {
             "value": "900",
-            "label": "Black 900"
+            "label": "أسود 900"
           }
         ]
       },
       {
         "type": "range",
         "id": "h1_font_size",
-        "label": "H1 font size",
+        "label": "حجم خط H1",
         "default": 60,
         "min": 20,
         "max": 120,
@@ -333,7 +428,7 @@
       {
         "type": "range",
         "id": "h2_font_size",
-        "label": "H2 font size",
+        "label": "حجم خط H2",
         "default": 42,
         "min": 20,
         "max": 100,
@@ -343,7 +438,7 @@
       {
         "type": "range",
         "id": "type_header_base_size",
-        "label": "H3 font size",
+        "label": "حجم خط H3",
         "default": 36,
         "min": 14,
         "max": 80,
@@ -353,7 +448,7 @@
       {
         "type": "range",
         "id": "h4_font_size",
-        "label": "H4 font size",
+        "label": "حجم خط H4",
         "default": 24,
         "min": 14,
         "max": 60,
@@ -363,9 +458,7 @@
       {
         "type": "range",
         "id": "type_header_spacing",
-        "label": {
-          "en": "Letter spacing"
-        },
+        "label": "تباعد الأحرف",
         "default": 0,
         "min": 0,
         "max": 10,
@@ -374,26 +467,22 @@
       },
       {
         "type": "header",
-        "content": "BUTTONS"
+        "content": "الأزرار"
       },
       {
         "type": "paragraph",
-        "content": "The button font is inherited from body text."
+        "content": "خط الأزرار مستمد من الخط الأساسي للنصوص."
       },
       {
         "type": "checkbox",
         "id": "btn_uppercase_text",
-        "label": {
-          "en": "Uppercase text label"
-        },
+        "label": "تبديل نص الزر إلى حروف كبيرة",
         "default": false
       },
       {
         "type": "range",
         "id": "btn_base_size",
-        "label": {
-          "en": "Font size"
-        },
+        "label": "حجم خط الزر",
         "default": 16,
         "min": 14,
         "max": 20,
@@ -403,9 +492,7 @@
       {
         "type": "range",
         "id": "btn_letter_spacing",
-        "label": {
-          "en": "Letter spacing"
-        },
+        "label": "تباعد الأحرف",
         "default": 0,
         "min": 0,
         "max": 20,
@@ -415,7 +502,7 @@
       {
         "type": "range",
         "id": "btn_border_width",
-        "label": "Border width",
+        "label": "عرض الحدود",
         "default": 1,
         "min": 1,
         "max": 5,
@@ -425,9 +512,7 @@
       {
         "type": "range",
         "id": "btn_border_radius",
-        "label": {
-          "en": "Border radius"
-        },
+        "label": "استدارة الحدود",
         "default": 5,
         "min": 0,
         "max": 100,
@@ -437,9 +522,7 @@
       {
         "type": "range",
         "id": "btn_line_height",
-        "label": {
-          "en": "Line height"
-        },
+        "label": "ارتفاع السطر",
         "default": 23,
         "min": 1,
         "max": 50,
@@ -449,55 +532,55 @@
       {
         "id": "btn_weight",
         "type": "select",
-        "label": "Font weight",
+        "label": "وزن الخط",
         "default": "500",
         "options": [
           {
             "value": "100",
-            "label": "Thin 100"
+            "label": "رفيع 100"
           },
           {
             "value": "200",
-            "label": "Extra-light 200"
+            "label": "خفيف جدًا 200"
           },
           {
             "value": "300",
-            "label": "Light 300"
+            "label": "خفيف 300"
           },
           {
             "value": "400",
-            "label": "Regular 400"
+            "label": "عادي 400"
           },
           {
             "value": "500",
-            "label": "Medium 500"
+            "label": "متوسط 500"
           },
           {
             "value": "600",
-            "label": "Semi-bold 600"
+            "label": "سميك 600"
           },
           {
             "value": "700",
-            "label": "Bold 700"
+            "label": "عريض 700"
           },
           {
             "value": "800",
-            "label": "Extra-bold 800"
+            "label": "عريض جدًا 800"
           },
           {
             "value": "900",
-            "label": "Black 900"
+            "label": "أسود 900"
           }
         ]
       },
       {
         "type": "header",
-        "content": "INPUTS"
+        "content": "الحقول"
       },
       {
         "type": "range",
         "id": "inputs_border_thickness",
-        "label": "Thickness",
+        "label": "سُمك الحدود",
         "min": 0,
         "max": 12,
         "step": 1,
@@ -507,7 +590,7 @@
       {
         "type": "range",
         "id": "inputs_border_radius",
-        "label": "Corner radius",
+        "label": "استدارة الحواف",
         "min": 0,
         "max": 60,
         "step": 1,
