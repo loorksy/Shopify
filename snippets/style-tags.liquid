@@ -105,14 +105,21 @@
      --color-warning-bg: {{ settings.color_warning | color_lighten: 45 }};
      --color-success-bg: {{ settings.color_success | color_lighten: 50 }};
 
-   	/* CUSTOM COLOR */
-   	--text-black: 0,0,0;
-   	--text-white: 255,255,255;
-   	--bg-black: 0,0,0;
-   	--bg-white: 255,255,255;
-   	--rounded-full: 9999px;
-   	--bg-card-placeholder: rgba(243,243,243,1);
-   	--arrow-select-box: url({{ 'ar-down.svg' | asset_url }});
+        /* CUSTOM COLOR */
+        --text-black: 0,0,0;
+        --text-white: 255,255,255;
+        --bg-black: 0,0,0;
+        --bg-white: 255,255,255;
+        /* إضافة إعدادات المظهر الاحترافي الداكن */
+        --dashboard-accent: #2ac17f;
+        --dashboard-surface: 17,18,26;
+        --dashboard-surface-strong: 23,24,32;
+        --global-radius: {{ settings.global_border_radius | default: 18 }}px;
+        --glass-blur-strength: {{ settings.glass_blur_strength | default: 14 }}px;
+        --glass-blur-opacity: 0.16;
+        --rounded-full: 9999px;
+        --bg-card-placeholder: rgba(243,243,243,1);
+        --arrow-select-box: url({{ 'ar-down.svg' | asset_url }});
 
    	/* FONT SIZES */
    	--font-base-size: {{ font_body_base }};

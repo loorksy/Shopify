@@ -8,112 +8,161 @@
     "theme_support_url": "https://enfitah.com/help/"
   },
   {
-    "name": "Theme active",
+    "name": "تفعيل الثيم",
     "settings": [
       {
         "type": "paragraph",
-        "content": "Start your business journey with [Enfitah Shopify Theme](https://enfitah.com)"
+        "content": "ابدأ رحلتك التجارية مع [ثيم انفتيح](https://enfitah.com)"
       },
       {
         "type": "text",
         "id": "purchase_code",
-        "label": "Purchase code",
-        "placeholder": "Paste your activation code"
+        "label": "رمز الشراء",
+        "placeholder": "ألصق رمز التفعيل هنا"
       },
       {
         "type": "paragraph",
-        "content": "[Buy a new license?](https://enfitah.com/pricing)"
+        "content": "[شراء ترخيص جديد؟](https://enfitah.com/pricing)"
       },
       {
         "type": "paragraph",
-        "content": "Use Enfitah and explore all the tools and services you need to start, run, and grow your business."
+        "content": "استخدم ثيم انفتيح واستكشف كل الأدوات والخدمات التي تحتاجها لبدء وتشغيل وتنمية متجرك."
       }
     ]
   },
   {
-    "name": "Dear customers!",
+    "name": "أعزاؤنا العملاء",
     "settings": [
       {
         "type": "paragraph",
-        "content": "[Enfitah Team](https://Enfitah.com/) is an experienced web development team that loves to deliver impressive and well-designed Arabic Shopify themes. All of our themes are easy to install and customize, so you can start your own online store in just a few minutes."
+        "content": "[فريق انفتيح](https://Enfitah.com/) فريق تطوير متمرس يحب تقديم ثيمات شوبيفاي عربية مبهرة ومتقنة. جميع ثيماتنا سهلة التثبيت والتخصيص، لتبدأ متجرك في دقائق."
       },
       {
         "type": "paragraph",
-        "content": "If you are facing a problems with installation, please visit our [documentation page](https://enfitah.com/help) to find answers to many of the commonly asked questions. You can also watch our tutorials on [Youtube](https://youtube.com/@enfitah)."
+        "content": "إذا واجهت أي مشاكل في التثبيت، تفضل بزيارة [صفحة الشروحات](https://enfitah.com/help) للعثور على إجابات للأسئلة الشائعة، ويمكنك مشاهدة شروحاتنا على [يوتيوب](https://youtube.com/@enfitah)."
       }
     ]
   },
   {
-    "name": "General settings",
+    "name": "الإعدادات العامة",
     "settings": [
       {
         "type": "header",
-        "content": "Favicon"
+        "content": "أيقونة المتصفح"
       },
       {
         "type": "checkbox",
         "id": "use_favicon",
-        "label": "Use favicon icon (32px x 32px)",
+        "label": "تفعيل أيقونة فافيكون (32×32)",
         "default": true
       },
       {
         "type": "image_picker",
         "id": "favicon",
-        "label": "Image favicon",
-        "info": "Will be scaled down to 32 x 32px"
+        "label": "صورة الفافيكون",
+        "info": "سيتم تصغيرها إلى 32×32 بكسل"
       },
       {
         "type": "header",
-        "content": "Ajax \"ADD TO CART\""
+        "content": "زر الإضافة للسلة بخاصية آجاكس"
       },
       {
         "type": "checkbox",
         "id": "use_ajax_atc",
-        "label": "Enable ajax \"ADD TO CART\"",
+        "label": "تفعيل زر \"أضف للسلة\" بالآجاكس",
         "default": true
       },
       {
         "type": "header",
-        "content": "Scroll to top button"
+        "content": "زر الصعود للأعلى"
       },
       {
         "type": "checkbox",
         "id": "show_scroll_top_button",
-        "label": "Show scroll to top button",
+        "label": "إظهار زر الصعود لأعلى الصفحة",
         "default": true,
-        "info": "[Watch tutorial](https://enfitah.com/help)"
+        "info": "[مشاهدة شرح](https://enfitah.com/help)"
       },
       {
         "type": "header",
-        "content": "Right-to-Left support"
+        "content": "دعم الاتجاه من اليمين لليسار"
       },
       {
         "type": "checkbox",
         "id": "enable_rtl",
-        "label": "Enable RTL",
+        "label": "تفعيل العرض من اليمين لليسار",
         "default": true,
-        "info": "[Watch tutorial](https://enfitah.com/help)"
+        "info": "[مشاهدة شرح](https://enfitah.com/help)"
       },
       {
         "type": "text",
         "id": "language_support_rtl",
-        "label": "Languages support RTL",
+        "label": "اللغات الداعمة لـ RTL",
         "default": "he,ar",
-        "info": "Enter ISO language code, separate by comma. Leave blank to enable for all languages. [Check ISO language code](https://www.loc.gov/standards/iso639-2/php/code_list.php)"
+        "info": "أدخل رموز اللغات بنظام ISO مفصولة بفاصلة. اتركه فارغًا لتفعيل كل اللغات. [قائمة رموز ISO](https://www.loc.gov/standards/iso639-2/php/code_list.php)"
+      },
+      {
+        "type": "header",
+        "content": "المظهر الاحترافي"
+      },
+      {
+        "type": "range",
+        "id": "global_border_radius",
+        "label": "انحناء الزوايا العامة",
+        "default": 18,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "info": "يتحكم في انحناء زوايا صور المنتجات، الكروت، الحاويات، الأزرار، والخلفيات المستطيلة داخل الأقسام."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_glass_blur",
+        "label": "تفعيل تأثير الضبابية (Blur)",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "glass_blur_strength",
+        "label": "قوة تأثير الضبابية",
+        "default": 14,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_page_motion",
+        "label": "تفعيل أنيميشن الانتقال بين الصفحات",
+        "default": true,
+        "info": "يحرك المحتوى الرئيسي عند التحميل ليمنح تجربة انتقال ناعمة."
+      },
+      {
+        "type": "select",
+        "id": "page_motion_style",
+        "label": "نوع حركة الانتقال",
+        "options": [
+          { "value": "fade", "label": "تلاشي" },
+          { "value": "slide", "label": "انزلاق" },
+          { "value": "scale", "label": "تكبير خفيف" }
+        ],
+        "default": "fade"
       }
     ]
   },
   {
-    "name": "Layout settings",
+    "name": "إعدادات التخطيط",
     "settings": [
       {
         "type": "header",
-        "content": "Fixed width container"
+        "content": "حاوية بعرض ثابت"
       },
       {
         "type": "range",
         "id": "container_width",
-        "label": "Container width",
+        "label": "عرض الحاوية",
         "default": 1280,
         "min": 1100,
         "max": 1900,
@@ -122,13 +171,13 @@
       },
       {
         "type": "header",
-        "content": "Fluid container",
-        "info": "A section with \"Fluid container\" will take-up the complete width of the viewport and will expand or shrink when ever the viewport is resized."
+        "content": "حاوية مرنة",
+        "info": "القسم ذو \"الحاوية المرنة\" يمتد على عرض الشاشة بالكامل ويتغير حجمه مع تغيير عرض المتصفح."
       },
       {
         "type": "range",
         "id": "container_fluid_width",
-        "label": "Container max-width",
+        "label": "أقصى عرض للحاوية",
         "default": 1620,
         "min": 1280,
         "max": 2560,
@@ -138,7 +187,7 @@
       {
         "type": "range",
         "id": "container_fluid_offset",
-        "label": "Margin left & right",
+        "label": "هوامش جانبية",
         "default": 95,
         "min": 0,
         "max": 150,
