@@ -12,15 +12,29 @@
     endif
   endif
 
+  assign blur_enabled = settings.enable_blur_effect
+  if blur_enabled == blank
+    assign blur_enabled = settings.enable_glass_blur
+  endif
+
+  assign page_transition_enabled = settings.enable_page_transitions
+  if page_transition_enabled == blank
+    assign page_transition_enabled = settings.enable_page_motion
+  endif
+  assign page_transition_style = settings.page_transition_type
+  if page_transition_style == blank
+    assign page_transition_style = settings.page_motion_style
+  endif
+
   assign body_classes = 'template-' | append: template.name | append: ' ' | append: template.suffix | append: ' m-gradient m-color-' | append: settings.default_color_scheme
   if settings.page_transition
     assign body_classes = body_classes | append: ' m:overflow-hidden'
   endif
-  if settings.enable_glass_blur
+  if blur_enabled
     assign body_classes = body_classes | append: ' glass-blur-enabled'
   endif
-  if settings.enable_page_motion
-    assign body_classes = body_classes | append: ' page-motion-enabled page-motion-' | append: settings.page_motion_style
+  if page_transition_enabled
+    assign body_classes = body_classes | append: ' page-motion-enabled page-motion-' | append: page_transition_style
   endif
   if template.suffix == 'about-us'
     assign body_classes = body_classes | append: ' sf__page-about'

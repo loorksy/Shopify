@@ -5,19 +5,21 @@
 
 /* تنسيق داكن احترافي بطابع لوحات التحكم */
 :root {
-  --dashboard-bg: #0b0b0f;
-  --dashboard-card: rgba(var(--dashboard-surface), 0.9);
-  --dashboard-card-strong: rgba(var(--dashboard-surface-strong), 0.92);
+  --dashboard-bg: var(--dark-background, #0b0b0f);
+  --dashboard-card: rgba(var(--dashboard-surface, 17,18,26), 0.92);
+  --dashboard-card-strong: rgba(var(--dashboard-surface-strong, 23,24,32), 0.94);
   --dashboard-border: rgba(255, 255, 255, 0.06);
   --dashboard-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+  --dashboard-text: var(--text_primary_dark, #e8ecf1);
+  --accent: var(--accent-color, #27d36b);
 }
 
 body {
   background: var(--dashboard-bg);
-  color: #e8ecf1;
+  color: var(--dashboard-text);
 }
 
-header, .header, .topbar {
+header, .header, .topbar, .toolbar {
   background: linear-gradient(120deg, rgba(17,18,26,0.96), rgba(17,18,26,0.9));
   border-radius: var(--global-radius);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
@@ -40,7 +42,11 @@ header, .header, .topbar {
 .glass-blur-enabled .drawer,
 .glass-blur-enabled .filters-toolbar,
 .glass-blur-enabled .m-product-card,
-.glass-blur-enabled .m-collection-card {
+.glass-blur-enabled .m-collection-card,
+.glass-blur-enabled header,
+.glass-blur-enabled .header,
+.glass-blur-enabled .topbar,
+.glass-blur-enabled .toolbar {
   backdrop-filter: blur(var(--glass-blur-strength));
   -webkit-backdrop-filter: blur(var(--glass-blur-strength));
   background-color: rgba(17, 18, 26, var(--glass-blur-opacity));
@@ -52,7 +58,11 @@ header, .header, .topbar {
   .glass-blur-enabled .drawer,
   .glass-blur-enabled .filters-toolbar,
   .glass-blur-enabled .m-product-card,
-  .glass-blur-enabled .m-collection-card {
+  .glass-blur-enabled .m-collection-card,
+  .glass-blur-enabled header,
+  .glass-blur-enabled .header,
+  .glass-blur-enabled .topbar,
+  .glass-blur-enabled .toolbar {
     background-color: rgba(17, 18, 26, 0.9);
   }
 }
@@ -85,10 +95,10 @@ button,
 input[type="submit"],
 .sf__btn {
   border-radius: calc(var(--global-radius) - 4px);
-  background: linear-gradient(145deg, rgba(42, 193, 127, 0.95), rgba(32, 166, 108, 0.95));
+  background: linear-gradient(145deg, rgba(39, 211, 107, 0.95), rgba(34, 190, 96, 0.95));
   color: #0b0b0f;
-  border: 1px solid rgba(42, 193, 127, 0.6);
-  box-shadow: 0 10px 24px rgba(42, 193, 127, 0.25);
+  border: 1px solid rgba(39, 211, 107, 0.6);
+  box-shadow: 0 10px 24px rgba(39, 211, 107, 0.25);
   transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
@@ -98,8 +108,8 @@ button:hover,
 .m-button:hover,
 .sf__btn:hover {
   transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 14px 32px rgba(42, 193, 127, 0.35);
-  background: linear-gradient(145deg, rgba(50, 210, 138, 0.98), rgba(42, 193, 127, 0.98));
+  box-shadow: 0 14px 32px rgba(39, 211, 107, 0.35);
+  background: linear-gradient(145deg, rgba(39, 211, 107, 0.98), rgba(34, 190, 96, 0.98));
 }
 
 /* شارات وتفاصيل سعر المنتج */
