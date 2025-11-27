@@ -16,6 +16,12 @@
   if settings.page_transition
     assign body_classes = body_classes | append: ' m:overflow-hidden'
   endif
+  if settings.enable_glass_blur
+    assign body_classes = body_classes | append: ' glass-blur-enabled'
+  endif
+  if settings.enable_page_motion
+    assign body_classes = body_classes | append: ' page-motion-enabled page-motion-' | append: settings.page_motion_style
+  endif
   if template.suffix == 'about-us'
     assign body_classes = body_classes | append: ' sf__page-about'
   endif
