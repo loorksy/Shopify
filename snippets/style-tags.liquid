@@ -110,20 +110,20 @@
         --text-white: 255,255,255;
         --bg-black: 0,0,0;
         --bg-white: 255,255,255;
-        /* إعدادات المظهر الداكن/الفاتح واللمسة الخضراء */
+        /* إعدادات المظهر الداكن/الفاتح واللمسة الخضراء مع طابع iOS الزجاجي */
         --accent-color: #27d36b;
         --accent-strong: #22c061;
         --dark-background: #05070b;
-        --dark-surface: #11131a;
-        --dark-surface-strong: #161922;
-        --light-background: #ffffff;
-        --light-surface: #f4f5f7;
-        --dashboard-accent: #2ac17f;
-        --dashboard-surface: 17,18,26;
-        --dashboard-surface-strong: 23,24,32;
+        --dark-surface: #0f1118;
+        --dark-surface-strong: #131622;
+        --light-background: #f8f9fb;
+        --light-surface: #ffffff;
+        --glass-bg-light: rgba(255, 255, 255, 0.65);
+        --glass-bg-dark: rgba(255, 255, 255, 0.08);
+        --glass-outline: rgba(255, 255, 255, 0.18);
         --global-radius: {{ settings.global_radius | default: settings.global_border_radius | default: 18 }}px;
-        --glass-blur-strength: {{ settings.blur_strength | default: settings.glass_blur_strength | default: 14 }}px;
-        --glass-blur-opacity: 0.16;
+        --glass-blur-strength: {{ settings.blur_strength | default: 14 }}px;
+        --glass-blur: {{ settings.glass_blur_strength | default: settings.blur_strength | default: 14 }}px;
         --rounded-full: 9999px;
         --bg-card-placeholder: rgba(243,243,243,1);
         --arrow-select-box: url({{ 'ar-down.svg' | asset_url }});

@@ -3,210 +3,482 @@
   Write your custom CSS below
 {% endcomment %}
 
-/* تنسيق داكن احترافي بطابع لوحات التحكم */
+/* تصميم iOS زجاجي خفيف بدون ظلال وبانحناءات ناعمة */
 :root {
-  --dashboard-bg: var(--dark-background, #0b0b0f);
-  --dashboard-card: rgba(var(--dashboard-surface, 17,18,26), 0.92);
-  --dashboard-card-strong: rgba(var(--dashboard-surface-strong, 23,24,32), 0.94);
-  --dashboard-border: rgba(255, 255, 255, 0.06);
-  --dashboard-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
-  --dashboard-text: var(--text_primary_dark, #e8ecf1);
-  --accent: var(--accent-color, #27d36b);
+  --ios-accent: var(--accent-color, #27d36b);
+  --ios-bg-light: linear-gradient(180deg, #f9fafc 0%, #eef1f7 100%);
+  --ios-bg-dark: linear-gradient(180deg, #05070b 0%, #0e1018 100%);
+  --ios-text-strong: #0f1115;
+  --ios-text-soft: #4c5160;
+  --ios-text-dark: #f7f8fb;
+  --glass-surface-light: var(--glass-bg-light, rgba(255, 255, 255, 0.65));
+  --glass-surface-dark: var(--glass-bg-dark, rgba(255, 255, 255, 0.08));
+  --glass-outline-color: var(--glass-outline, rgba(255, 255, 255, 0.12));
+  --glass-blur-value: var(--glass-blur, var(--glass-blur-strength, 14px));
+  --ios-radius: var(--global-radius, 14px);
+  --ios-radius-soft: max(calc(var(--ios-radius) - 4px), 6px);
 }
 
 body {
-  background: var(--dashboard-bg);
-  color: var(--dashboard-text);
+  background: var(--ios-bg-light);
+  color: var(--ios-text-strong);
+  font-family: var(--font-stack-body, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  line-height: 1.6;
 }
 
-header, .header, .topbar, .toolbar {
-  background: linear-gradient(120deg, rgba(17,18,26,0.96), rgba(17,18,26,0.9));
-  border-radius: var(--global-radius);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--dashboard-border);
-}
-
-/* الحاويات والكروت */
-.sf__card, .m-product-card, .card, .collection-sidebar, .sidebar, .drawer, .drawer__inner,
-.m-product-card__inner, .filters-toolbar, .facet-filters, .price-range, .tags-filter,
-.m-collection-sidebar, .m-blog-card, .m-article-card, .m-collection-card {
-  background: var(--dashboard-card);
-  border-radius: var(--global-radius);
-  border: 1px solid var(--dashboard-border);
-  box-shadow: var(--dashboard-shadow);
-  transition: transform 320ms ease, box-shadow 320ms ease, border-color 240ms ease;
-}
-
-.glass-blur-enabled .sf__card,
-.glass-blur-enabled .collection-sidebar,
-.glass-blur-enabled .drawer,
-.glass-blur-enabled .filters-toolbar,
-.glass-blur-enabled .m-product-card,
-.glass-blur-enabled .m-collection-card,
-.glass-blur-enabled header,
-.glass-blur-enabled .header,
-.glass-blur-enabled .topbar,
-.glass-blur-enabled .toolbar {
-  backdrop-filter: blur(var(--glass-blur-strength));
-  -webkit-backdrop-filter: blur(var(--glass-blur-strength));
-  background-color: rgba(17, 18, 26, var(--glass-blur-opacity));
-}
-
-@supports not (backdrop-filter: blur(1px)) {
-  .glass-blur-enabled .sf__card,
-  .glass-blur-enabled .collection-sidebar,
-  .glass-blur-enabled .drawer,
-  .glass-blur-enabled .filters-toolbar,
-  .glass-blur-enabled .m-product-card,
-  .glass-blur-enabled .m-collection-card,
-  .glass-blur-enabled header,
-  .glass-blur-enabled .header,
-  .glass-blur-enabled .topbar,
-  .glass-blur-enabled .toolbar {
-    background-color: rgba(17, 18, 26, 0.9);
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--ios-bg-dark);
+    color: var(--ios-text-dark);
   }
 }
 
-.m-product-card:hover,
-.sf__card:hover,
-.drawer:hover,
-.collection-sidebar:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.45);
+.ios-glass-mode body {
+  background: var(--ios-bg-light);
 }
 
-/* صور المنتجات والكروت */
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode body {
+    background: var(--ios-bg-dark);
+  }
+}
+
+/* خلفيات زجاجية عامة */
+.ios-glass-mode .glass-surface,
+.ios-glass-mode .glass-panel,
+.ios-glass-mode .glass-bar,
+.glass-shell {
+  background: var(--glass-surface-light);
+  backdrop-filter: blur(var(--glass-blur-value));
+  -webkit-backdrop-filter: blur(var(--glass-blur-value));
+  border: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .glass-surface,
+  .ios-glass-mode .glass-panel,
+  .ios-glass-mode .glass-bar,
+  .glass-shell {
+    background: var(--glass-surface-dark);
+    border-color: var(--glass-outline-color);
+  }
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .ios-glass-mode .glass-surface,
+  .ios-glass-mode .glass-panel,
+  .ios-glass-mode .glass-bar,
+  .glass-shell {
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .ios-glass-mode .glass-surface,
+    .ios-glass-mode .glass-panel,
+    .ios-glass-mode .glass-bar,
+    .glass-shell {
+      background: rgba(20, 22, 30, 0.82);
+    }
+  }
+}
+
+/* هيدر زجاجي ثابت */
+.m-header__wrapper,
+header,
+.header,
+.m-topbar,
+.toolbar,
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--glass-surface-light);
+  backdrop-filter: blur(calc(var(--glass-blur-value) * 0.8));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur-value) * 0.8));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 0 0 var(--ios-radius) var(--ios-radius);
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .m-header__wrapper,
+  header,
+  .header,
+  .m-topbar,
+  .toolbar,
+  .topbar {
+    background: var(--glass-surface-dark);
+    border-bottom: 1px solid var(--glass-outline-color);
+  }
+}
+
+.m-header__main,
+.m-header__desktop,
+.m-header__mobile,
+.m-header__container,
+.m-header__actions {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  gap: 1.25rem;
+}
+
+.m-topbar {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  border-radius: 0;
+}
+
+/* تخطيط المسافات بين الأقسام */
+.shopify-section {
+  padding-block: clamp(28px, 4vw, 60px);
+  border: none;
+}
+
+.section-header,
+.section-footer,
+.section-block,
+.section-wrapper {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* البطاقات والمنتجات بدون حواف صلبة */
+.sf__card,
+.m-product-card,
+.card,
+.collection-sidebar,
+.sidebar,
+.drawer,
+.drawer__inner,
+.m-product-card__inner,
+.filters-toolbar,
+.facet-filters,
+.price-range,
+.tags-filter,
+.m-collection-sidebar,
+.m-blog-card,
+.m-article-card,
+.m-collection-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  transition: transform 220ms ease;
+}
+
+.ios-glass-mode .sf__card,
+.ios-glass-mode .m-product-card,
+.ios-glass-mode .m-collection-card,
+.ios-glass-mode .collection-sidebar,
+.ios-glass-mode .drawer,
+.ios-glass-mode .filters-toolbar,
+.ios-glass-mode .facet-filters,
+.ios-glass-mode .m-collection-sidebar {
+  background: var(--glass-surface-light);
+  padding: clamp(12px, 2vw, 18px);
+  border-radius: var(--ios-radius);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(var(--glass-blur-value));
+  -webkit-backdrop-filter: blur(var(--glass-blur-value));
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .sf__card,
+  .ios-glass-mode .m-product-card,
+  .ios-glass-mode .m-collection-card,
+  .ios-glass-mode .collection-sidebar,
+  .ios-glass-mode .drawer,
+  .ios-glass-mode .filters-toolbar,
+  .ios-glass-mode .facet-filters,
+  .ios-glass-mode .m-collection-sidebar {
+    background: var(--glass-surface-dark);
+    border-color: var(--glass-outline-color);
+  }
+}
+
+/* بطاقات المنتجات المبسطة */
+.m-product-card__inner,
+.m-collection-card__inner,
+.sf__card-content {
+  display: grid;
+  gap: 10px;
+  background: transparent;
+}
+
 .m-product-card__media,
 .m-product-card__media img,
 .m-product-card__main-image,
 .m-product-card__hover-image,
 .m-collection-card__image,
 .m-article-card__image,
-.sf__card img {
-  border-radius: var(--global-radius);
-  overflow: hidden;
+.sf__card img,
+.product__media img {
+  border-radius: var(--ios-radius);
+  background: rgba(0, 0, 0, 0.02);
 }
 
-/* أزرار عامة بلمسة خضراء */
+.m-product-card__name,
+.m-product-card__title,
+.m-product-card__price,
+.price,
+.m-price,
+.product-price {
+  color: inherit;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.m-product-card__meta,
+.m-product-card__footer,
+.m-collection-card__content {
+  display: grid;
+  gap: 6px;
+  background: transparent;
+  padding-inline: 4px;
+}
+
+.ios-glass-mode .m-product-card__footer,
+.ios-glass-mode .m-collection-card__content {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.55) 100%);
+  backdrop-filter: blur(calc(var(--glass-blur-value) * 0.6));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur-value) * 0.6));
+  border-radius: var(--ios-radius);
+  padding: 12px 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .m-product-card__footer,
+  .ios-glass-mode .m-collection-card__content {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.08) 100%);
+  }
+}
+
+/* شبكة المنتجات والفلاتر */
+.filters-toolbar,
+.facet-filters,
+.collection-toolbar,
+.collection-header,
+.collection-filters {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  gap: 10px;
+  padding: 12px 0;
+}
+
+.ios-glass-mode .filters-toolbar,
+.ios-glass-mode .facet-filters,
+.ios-glass-mode .collection-toolbar,
+.ios-glass-mode .collection-filters {
+  background: var(--glass-surface-light);
+  border-radius: var(--ios-radius);
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(var(--glass-blur-value));
+  -webkit-backdrop-filter: blur(var(--glass-blur-value));
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .filters-toolbar,
+  .ios-glass-mode .facet-filters,
+  .ios-glass-mode .collection-toolbar,
+  .ios-glass-mode .collection-filters {
+    border-color: var(--glass-outline-color);
+    background: var(--glass-surface-dark);
+  }
+}
+
+/* صفحة المنتج */
+.product__media-wrapper,
+.product__info-wrapper,
+.product__blocks {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.ios-glass-mode .product__info-wrapper {
+  background: var(--glass-surface-light);
+  padding: clamp(16px, 3vw, 28px);
+  border-radius: var(--ios-radius);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(calc(var(--glass-blur-value) * 0.9));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur-value) * 0.9));
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .product__info-wrapper {
+    background: var(--glass-surface-dark);
+    border-color: var(--glass-outline-color);
+  }
+}
+
+.product-form__buttons,
+.product__payment-container {
+  gap: 10px;
+}
+
+/* أزرار بأسلوب iOS بدون ظل */
 .btn,
 .button,
 button,
 .m-button,
 input[type="submit"],
-.sf__btn {
-  border-radius: calc(var(--global-radius) - 4px);
-  background: linear-gradient(145deg, rgba(39, 211, 107, 0.95), rgba(34, 190, 96, 0.95));
-  color: #0b0b0f;
-  border: 1px solid rgba(39, 211, 107, 0.6);
-  box-shadow: 0 10px 24px rgba(39, 211, 107, 0.25);
-  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+.sf__btn,
+.product-form__submit,
+.shopify-payment-button .shopify-payment-button__button {
+  border-radius: 999px;
+  background: var(--ios-accent);
+  color: #ffffff;
+  border: 0;
+  box-shadow: none;
+  padding: 12px 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: transform 150ms ease, background-color 150ms ease, opacity 150ms ease;
 }
 
 .btn:hover,
 .button:hover,
 button:hover,
 .m-button:hover,
-.sf__btn:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 14px 32px rgba(39, 211, 107, 0.35);
-  background: linear-gradient(145deg, rgba(39, 211, 107, 0.98), rgba(34, 190, 96, 0.98));
+input[type="submit"]:hover,
+.sf__btn:hover,
+.product-form__submit:hover,
+.shopify-payment-button .shopify-payment-button__button:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--ios-accent) 88%, #ffffff 12%);
 }
 
-/* شارات وتفاصيل سعر المنتج */
-.m-price, .price, .product-price {
-  color: #e4f7ed;
+.btn:focus,
+.button:focus,
+button:focus,
+.m-button:focus,
+.sf__btn:focus {
+  outline: 2px solid rgba(39, 211, 107, 0.35);
+  outline-offset: 2px;
 }
 
-.m-product-card__title a,
-.m-product-card__title,
-.sf__card-title {
-  color: #f1f4f8;
+.btn:disabled,
+.button:disabled,
+button:disabled,
+.m-button:disabled,
+.sf__btn:disabled {
+  opacity: 0.6;
+  transform: none;
 }
 
-.m-product-card__vendor,
-.m-product-card__rating,
-.m-product-card__options,
-.m-product-card__meta {
-  color: rgba(232, 236, 241, 0.75);
+/* حقول الإدخال والفلاتر */
+input,
+select,
+textarea,
+.facet-filters__sort,
+.price-range input,
+.price-range .field__input {
+  border-radius: var(--ios-radius-soft);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: none;
 }
 
-/* شريط جانبي للفلاتر */
-.collection-sidebar .card,
-.collection-sidebar .sidebar-block,
-.collection-sidebar .filter-group,
-.facet-filters__fieldset {
-  background: var(--dashboard-card-strong);
-  border-radius: var(--global-radius);
-  padding: 16px;
-  border: 1px solid var(--dashboard-border);
+@media (prefers-color-scheme: dark) {
+  input,
+  select,
+  textarea,
+  .facet-filters__sort,
+  .price-range input,
+  .price-range .field__input {
+    border-color: var(--glass-outline-color);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--ios-text-dark);
+  }
 }
 
-.collection-sidebar .filter-group__heading,
-.facet-filters__label {
-  color: #e8ecf1;
-  font-weight: 700;
+/* الفواصل والحدود الطفيفة */
+hr,
+.section-separator,
+.divider {
+  border: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
 }
 
-.facet-filters .facet-checkbox input:checked + label,
-.tags-filter input:checked + label,
-.price-range input {
-  border-color: rgba(42, 193, 127, 0.6);
-  color: #e8ecf1;
+@media (prefers-color-scheme: dark) {
+  hr,
+  .section-separator,
+  .divider {
+    background: rgba(255, 255, 255, 0.12);
+  }
 }
 
-/* خلفيات الأقسام الرئيسية */
-section,
-.shopify-section,
-.sf__section,
-.m-section {
-  background-color: transparent;
+/* أزرار التنقل العائمة والاختصارات */
+.floating-buttons,
+.bottom-nav,
+#whatsapp-widget,
+.sf-floating-button,
+.floaty,
+.drawer__close,
+.modal__close-button {
+  background: var(--glass-surface-light);
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(var(--glass-blur-value));
+  -webkit-backdrop-filter: blur(var(--glass-blur-value));
+  box-shadow: none;
 }
 
-.sf__section .container,
-.m-section .container,
-.sf__section .sf__inner,
-.m-section .sf__inner {
-  border-radius: var(--global-radius);
+@media (prefers-color-scheme: dark) {
+  .floating-buttons,
+  .bottom-nav,
+  #whatsapp-widget,
+  .sf-floating-button,
+  .floaty,
+  .drawer__close,
+  .modal__close-button {
+    background: var(--glass-surface-dark);
+    border-color: var(--glass-outline-color);
+  }
 }
 
-/* حركة دخول المحتوى */
-.page-motion-enabled #MainContent {
-  opacity: 0;
-  animation-duration: 0.32s;
-  animation-timing-function: cubic-bezier(0.16, 0.84, 0.44, 1);
-  animation-fill-mode: forwards;
+/* نصوص العناوين */
+.section-title,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.page-title,
+.product__title {
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
-.page-motion-enabled.page-motion-fade #MainContent { animation-name: m-page-fade; }
-.page-motion-enabled.page-motion-slide #MainContent { animation-name: m-page-slide; }
-.page-motion-enabled.page-motion-scale #MainContent { animation-name: m-page-scale; }
+/* الحركات البسيطة */
+.page-motion-enabled main,
+.page-motion-enabled .main-content {
+  animation: ios-fade-in 0.32s ease;
+}
 
-@keyframes m-page-fade {
-  from { opacity: 0; transform: translateY(10px); }
+@keyframes ios-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes m-page-slide {
-  from { opacity: 0; transform: translate3d(0, 18px, 0); }
-  to { opacity: 1; transform: translate3d(0, 0, 0); }
+.m-product-card:hover,
+.m-collection-card:hover,
+.sf__card:hover {
+  transform: translateY(-2px) scale(1.01);
 }
 
-@keyframes m-page-scale {
-  from { opacity: 0; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1); }
+/* ضمان الاتجاه RTL */
+[dir="rtl"] .header__inline-menu,
+[dir="rtl"] .m-header__container {
+  flex-direction: row-reverse;
 }
-
-/* تأثير هوفر للكروت */
-.m-product-card .m-product-card__media img,
-.m-product-card .m-product-card__hover-image {
-  transition: transform 340ms ease, filter 340ms ease;
-}
-
-.m-product-card:hover .m-product-card__media img {
-  transform: scale(1.03);
-  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.35));
-}
-
-/* الحفاظ على RTL */
-[dir="rtl"] .m-product-card__tags { right: auto; left: 18px; }
-[dir="rtl"] .collection-sidebar { text-align: right; }

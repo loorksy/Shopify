@@ -106,6 +106,24 @@
         "content": "المظهر الاحترافي"
       },
       {
+        "type": "checkbox",
+        "id": "enable_ios_glass_mode",
+        "label": "تفعيل نمط iOS الزجاجي",
+        "default": true,
+        "info": "يحوّل الواجهة إلى طابع زجاجي شفاف مع ضبابية خفيفة وخلفيات ناعمة."
+      },
+      {
+        "type": "range",
+        "id": "glass_blur_strength",
+        "label": "قوة الضبابية الزجاجية",
+        "default": 14,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "info": "تحدد شدة تأثير البلور للخلفيات الشفافة في نمط iOS."
+      },
+      {
         "type": "range",
         "id": "global_radius",
         "label": "انحناء الزوايا العامة",
@@ -149,16 +167,6 @@
         "id": "enable_glass_blur",
         "label": "تفعيل تأثير الضبابية (Blur)",
         "default": true
-      },
-      {
-        "type": "range",
-        "id": "glass_blur_strength",
-        "label": "قوة تأثير الضبابية",
-        "default": 14,
-        "min": 0,
-        "max": 30,
-        "step": 1,
-        "unit": "px"
       },
       {
         "type": "checkbox",
@@ -600,7 +608,7 @@
     ]
   },
   {
-    "name": "Colors",
+    "name": "الألوان",
     "settings": [
       {
         "type": "color_scheme_group",
@@ -608,142 +616,142 @@
         "definition": [
           {
             "type": "header",
-            "content": "Background"
+            "content": "الخلفية"
           },
           {
             "type": "color",
             "id": "background",
-            "label": "Background",
+            "label": "الخلفية",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
             "id": "background_secondary",
-            "label": "Background secondary",
+            "label": "خلفية ثانوية",
             "default": "#F5F5F5"
           },
           {
             "type": "color_background",
             "id": "background_gradient",
-            "label": "Background gradient",
-            "info": "Background gradient replaces background where possible."
+            "label": "تدرج الخلفية",
+            "info": "يستبدل التدرج الخلفية كلما أمكن."
           },
           {
             "type": "header",
-            "content": "Text"
+            "content": "النص"
           },
           {
             "type": "color",
             "id": "text",
-            "label": "Text",
+            "label": "نص رئيسي",
             "default": "#222222"
           },
           {
             "type": "color",
             "id": "subtext",
-            "label": "Subtext",
+            "label": "نص فرعي",
             "default": "#666666"
           },
           {
             "type": "color",
             "id": "heading_text",
-            "label": "Heading text",
+            "label": "نص العناوين",
             "default": "#222222"
           },
           {
             "type": "header",
-            "content": "Button"
+            "content": "الأزرار"
           },
           {
             "type": "color",
             "id": "button",
-            "label": "Solid button background",
+            "label": "خلفية زر ممتلئ",
             "default": "#222222"
           },
           {
             "type": "color",
             "id": "button_label",
-            "label": "Solid button label",
+            "label": "نص الزر الممتلئ",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
             "id": "outline_button_label",
-            "label": "Outline button",
+            "label": "زر بخط خارجي",
             "default": "#222222"
           },
           {
             "type": "header",
-            "content": "Button hover"
+            "content": "حالة تحويم الزر"
           },
           {
             "type": "color",
             "id": "button_hover",
-            "label": "Background & border",
+            "label": "لون الخلفية والحد",
             "default": "#222222"
           },
           {
             "type": "color",
             "id": "button_text_hover",
-            "label": "Text",
+            "label": "لون النص",
             "default": "#ffffff"
           },
           {
             "type": "header",
-            "content": "Price"
+            "content": "الأسعار"
           },
           {
             "type": "color",
             "id": "price_sale",
-            "label": "Price sale",
+            "label": "سعر التخفيض",
             "default": "#E02B2B"
           },
           {
             "type": "color",
             "id": "price_regular",
-            "label": "Price regular",
+            "label": "السعر الأساسي",
             "default": "#666666"
           },
           {
             "type": "header",
-            "content": "Form field"
+            "content": "حقول النماذج"
           },
           {
             "type": "color",
             "id": "form_field",
-            "label": "Form field background",
+            "label": "خلفية الحقول",
             "default": "#FFFFFF"
           },
           {
             "type": "color",
             "id": "form_field_label",
-            "label": "Form field text",
+            "label": "نص الحقول",
             "default": "#222222"
           },
           {
             "type": "header",
-            "content": "Tooltip"
+            "content": "تلميحات الأدوات"
           },
           {
             "type": "color",
             "id": "tooltip",
-            "label": "Tooltip background",
+            "label": "خلفية التلميح",
             "default": "#222222"
           },
           {
             "type": "color",
             "id": "tooltip_label",
-            "label": "Tooltip text",
+            "label": "نص التلميح",
             "default": "#FFFFFF"
           },
           {
             "type": "header",
-            "content": "Other"
+            "content": "عناصر أخرى"
           },
           {
             "type": "color",
             "id": "border",
-            "label": "Border",
+            "label": "لون الحدود",
             "default": "#EEEEEE"
           }
         ],
@@ -766,65 +774,65 @@
       {
         "type": "color_scheme",
         "id": "default_color_scheme",
-        "label": "Body color scheme",
+        "label": "نظام ألوان الجسم",
         "default": "default"
       },
       {
         "type": "header",
-        "content": "Count bubble"
+        "content": "فقاعات العد"
       },
       {
         "type": "paragraph",
-        "content": "Use for cart count bubble, wishlist count bubble, compare count bubble"
+        "content": "تُستخدم لعداد السلة، المفضلة، والمقارنة"
       },
       {
         "type": "color",
         "id": "bg_cart_wishlist_count",
-        "label": "Background",
+        "label": "الخلفية",
         "default": "#da3f3f"
       },
       {
         "type": "color",
         "id": "color_cart_wishlist_count",
-        "label": "Text",
+        "label": "النص",
         "default": "#ffffff"
       },
       {
         "type": "header",
-        "content": "Notification"
+        "content": "التنبيهات"
       },
       {
         "type": "color",
         "id": "color_success",
-        "label": "Success",
+        "label": "نجاح",
         "default": "#3a8735"
       },
       {
         "type": "color",
         "id": "color_warning",
-        "label": "Warning",
+        "label": "تحذير",
         "default": "#D2861A"
       },
       {
         "type": "color",
         "id": "color_error",
-        "label": "Error",
+        "label": "خطأ",
         "default": "#da3f3f"
       },
       {
         "type": "header",
-        "content": "Overlay"
+        "content": "طبقة تغطية"
       },
       {
         "type": "color",
         "id": "img_overlay_bg",
-        "label": "Background",
+        "label": "خلفية الطبقة",
         "default": "#000000"
       },
       {
         "type": "range",
         "id": "img_overlay_opacity",
-        "label": "Opacity",
+        "label": "الشفافية",
         "default": 40,
         "min": 0,
         "max": 100,
@@ -834,11 +842,11 @@
     ]
   },
   {
-    "name": "Section",
+    "name": "الأقسام",
     "settings": [
       {
         "type": "header",
-        "content": "Spacing"
+        "content": "المسافات"
       },
       {
         "type": "range",
@@ -848,7 +856,7 @@
         "step": 5,
         "default": 100,
         "unit": "px",
-        "label": "Space between sections"
+        "label": "المسافة بين الأقسام"
       },
       {
         "type": "range",
@@ -858,29 +866,29 @@
         "step": 2,
         "default": 48,
         "unit": "px",
-        "label": "Space between sections on mobile"
+        "label": "المسافة بين الأقسام على الجوال"
       }
     ]
   },
   {
-    "name": "Animations",
+    "name": "الحركات والمؤثرات",
     "settings": [
       {
         "type": "checkbox",
         "id": "page_transition",
         "default": true,
-        "label": "Enable page transition"
+        "label": "تفعيل انتقال الصفحة"
       },
       {
         "type": "checkbox",
         "id": "loading_design_mode",
-        "label": "Design mode",
-        "info": "In \"Design Mode\", the page transition process is always displayed regardless of the relevant settings or removal so you can review it all the time. When satisfied with the interface, turn it off"
+        "label": "وضع المعاينة",
+        "info": "في وضع المعاينة يظهر انتقال الصفحة دائمًا لمراجعة الواجهة، قم بإيقافه عند الانتهاء."
       },
       {
         "type": "range",
         "id": "loading_size",
-        "label": "Loading size",
+        "label": "حجم التحميل",
         "min": 50,
         "max": 150,
         "step": 2,
@@ -890,51 +898,51 @@
       {
         "type": "color",
         "id": "loading_color",
-        "label": "Loading color",
+        "label": "لون مؤشر التحميل",
         "default": "#bbbbbb"
       },
       {
         "type": "image_picker",
         "id": "loading_logo",
-        "label": "Custom logo",
-        "info": " Should use square sized images. Example: 64x64, 128x128"
+        "label": "شعار مخصص",
+        "info": "يُفضّل استخدام صور مربعة مثل: 64×64 أو 128×128"
       },
       {
         "type": "header",
-        "content": "Visible in the view"
+        "content": "حضور العناصر في العرض"
       },
       {
         "type": "select",
         "id": "animations",
-        "label": "Animation",
+        "label": "أنيميشن العناصر",
         "default": "none",
         "options": [
           {
             "value": "none",
-            "label": "None"
+            "label": "بدون"
           },
           {
             "value": "fade-in",
-            "label": "Fade in"
+            "label": "تلاشي"
           },
           {
             "value": "fade-in-up",
-            "label": "Fade in up"
+            "label": "تلاشي للأعلى"
           },
           {
             "value": "fade-in-left",
-            "label": "Fade in left"
+            "label": "تلاشي من اليسار"
           },
           {
             "value": "fade-in-right",
-            "label": "Fade in right"
+            "label": "تلاشي من اليمين"
           }
         ]
       },
       {
         "type": "range",
         "id": "animation_duration",
-        "label": "Duration",
+        "label": "المدة",
         "default": 0.6,
         "min": 0.1,
         "max": 1,
@@ -944,77 +952,77 @@
     ]
   },
   {
-    "name": "Product card",
+    "name": "بطاقة المنتج",
     "settings": [
       {
         "type": "paragraph",
-        "content": "[Watch tutorial](https://enfitah.com/help)"
+        "content": "[مشاهدة الشرح](https://enfitah.com/help)"
       },
       {
         "type": "header",
-        "content": "Layout"
+        "content": "التخطيط"
       },
       {
         "type": "select",
         "id": "pcard_layout",
-        "label": "Card style",
+        "label": "نمط البطاقة",
         "default": "1",
         "options": [
           {
             "value": "1",
-            "label": "Style 1"
+            "label": "نمط 1"
           },
           {
             "value": "2",
-            "label": "Style 2"
+            "label": "نمط 2"
           },
           {
             "value": "3",
-            "label": "Style 3"
+            "label": "نمط 3"
           },
           {
             "value": "4",
-            "label": "Style 4"
+            "label": "نمط 4"
           },
           {
             "value": "5",
-            "label": "Style 5"
+            "label": "نمط 5"
           }
         ]
       },
       {
         "type": "select",
         "id": "pcard_alignment",
-        "label": "Content alignment",
+        "label": "محاذاة المحتوى",
         "default": "left",
         "options": [
           {
             "value": "left",
-            "label": "Left"
+            "label": "يسار"
           },
           {
             "value": "center",
-            "label": "Center"
+            "label": "وسط"
           },
           {
             "value": "right",
-            "label": "Right"
+            "label": "يمين"
           }
         ]
       },
       {
         "type": "header",
-        "content": "Image"
+        "content": "الصورة"
       },
       {
         "type": "select",
         "id": "pcard_image_ratio",
-        "label": "Aspect ratio",
+        "label": "نسبة أبعاد الصورة",
         "default": "original",
         "options": [
           {
             "value": "original",
-            "label": "Adapt to image"
+            "label": "مطابقة للصورة"
           },
           {
             "value": "1/1",
