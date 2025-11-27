@@ -1,0 +1,303 @@
+{% liquid
+  assign enable_rtl = settings.enable_rtl
+  assign language_support_rtl = settings.language_support_rtl
+  if enable_rtl and language_support_rtl != blank
+    assign shop_locale = localization.language.iso_code
+    assign language_support_rtl_list = language_support_rtl | split: ','
+    assign is_rtl = language_support_rtl_list | where: shop_locale
+    if is_rtl.size > 0
+      assign enable_rtl = true
+    else
+      assign enable_rtl = false
+    endif
+  endif
+
+  assign body_classes = 'template-' | append: template.name | append: ' ' | append: template.suffix | append: ' m-gradient m-color-' | append: settings.default_color_scheme
+  if settings.page_transition
+    assign body_classes = body_classes | append: ' m:overflow-hidden'
+  endif
+  if template.suffix == 'about-us'
+    assign body_classes = body_classes | append: ' sf__page-about'
+  endif
+%}
+<!doctype html>
+<html
+  class="no-js {% if settings.page_transition %} m:overflow-hidden{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  data-template="{{ template.name }}"
+  {% if enable_rtl %}
+    dir="rtl"
+  {% endif %}
+>
+  <head>
+    
+{% if request.design_mode %}
+<!-- ADMIN-ONLY ICONS START -->
+<style>
+    .whatsapp-container {
+        position: fixed;
+        top: 25%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 37px;
+        height: 120px;
+        background-color: #000000;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        z-index: 1000;
+        border-radius: 5px 0 0 5px;
+        padding: 10px 0;
+    }
+
+    .whatsapp-button {
+        flex: 0 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease-in-out;
+        position: relative;
+    }
+
+    .whatsapp-button:hover {
+        transform: translateY(-3px);
+    }
+
+    .whatsapp-button img {
+        width: 21px;
+        height: 21px;
+    }
+
+    .whatsapp-button::after {
+        content: attr(data-text);
+        position: absolute;
+        right: calc(100% + 5px);
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #333;
+        color: white;
+        padding: 3px 6px;
+        border-radius: 3px;
+        font-size: 10px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .whatsapp-button:hover::after {
+        opacity: 1;
+    }
+
+    /* Modal Styles */
+    .image-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        width: 600px;
+        max-width: 90%;
+        max-height: 90%;
+        background: white;
+        padding: 3px;
+        border-radius: 5px;  /* Changed from 5px to 20px */
+        position: relative;
+        cursor: pointer;
+    }
+
+    .modal-content img {
+        width: 100%;
+        height: auto;
+        max-height: 600px;
+        object-fit: contain;
+        border-radius: 5px;  /* Added to make the image corners match the container */
+    }
+
+    .close-modal {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        background: black;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        .whatsapp-container {
+            width: 30px;
+            height: 100px;
+        }
+        .whatsapp-button img {
+            width: 18px;
+            height: 18px;
+        }
+        .whatsapp-button::after {
+            font-size: 8px;
+            padding: 2px 4px;
+        }
+    }
+</style>
+
+<div class="whatsapp-container">
+    <div class="whatsapp-button" data-text="إشعارات شوبيفاي" data-image="https://cdn.shopify.com/s/files/1/0656/3161/7182/files/notifications.jpg?v=1738875054" data-url="https://enfitah.com/go/notifications">
+        <img src="https://cdn.shopify.com/s/files/1/0689/0933/4762/files/jarass.png?v=1739107333" alt="Icon">
+    </div>
+    <div class="whatsapp-button" data-text="دروس تعليمية" data-image="https://cdn.shopify.com/s/files/1/0695/5719/0872/files/Youtube.jpg?v=1740483370" data-url="https://www.youtube.com/@enfitah/videos">
+        <img src="https://cdn.shopify.com/s/files/1/0689/0933/4762/files/yuu.png?v=1739107577" alt="Icon">
+    </div>
+    <div class="whatsapp-button" data-text="خدمات مخصصة" data-image="https://cdn.shopify.com/s/files/1/0689/0933/4762/files/services.jpg?v=1739113171" data-url="https://enfitah.com/go/services">
+        <img src="https://cdn.shopify.com/s/files/1/0689/0933/4762/files/veriff.png?v=1739111009" alt="Icon">
+    </div>
+</div>
+
+<div class="image-modal" id="imageModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img id="modalImage" src="" alt="Popup Image">
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalContent = document.querySelector('.modal-content');
+    const closeModal = document.querySelector('.close-modal');
+    let currentUrl = '';
+
+    document.querySelectorAll('.whatsapp-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const imageUrl = button.getAttribute('data-image');
+            currentUrl = button.getAttribute('data-url');
+            modalImage.src = imageUrl;
+            modal.style.display = 'flex';
+        });
+    });
+
+    modalContent.addEventListener('click', (event) => {
+        if (event.target !== closeModal && !closeModal.contains(event.target)) {
+            window.open(currentUrl, '_blank');
+        }
+    });
+
+    closeModal.addEventListener('click', (event) => {
+        event.stopPropagation();
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
+</script>
+
+{% endif %}
+    
+ <!-- PopUps Ends Here -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+    <meta name="theme-color" content="{{ settings.color_primary }}">
+
+    {%- liquid
+      render 'preload'
+      render 'SEO'
+      render 'social-meta-tags'
+      render 'font-face'
+    -%}
+
+    {% render 'critical-css' %}
+    {% render 'custom-code-head' %}
+
+    {{ 'grid.css' | asset_url | stylesheet_tag }}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'modules.css' | asset_url | stylesheet_tag }}
+
+    {% render 'style-tags' %}
+
+    <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme-global.js' | asset_url }}" defer="defer"></script>
+
+    {%- if settings.animations != 'none' -%}
+      <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {{ content_for_header }}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+    {% render 'theme-data' %}
+  </head>
+
+  <body
+    id="m-theme"
+    class="{{ body_classes }}"
+    {% if template.name == 'product' %}
+      data-product-id="{{ product.id }}"
+    {% endif %}
+  >
+    {% render 'page-transition' %}
+    {%- liquid
+      render 'scroll-top-button'
+      sections 'header-group'
+    -%}
+
+    <main role="main" id="MainContent">
+      {{ content_for_layout }}
+    </main>
+
+    {%- sections 'footer-group' -%}
+    
+    {% render 'script-tags' %}
+    {% render 'cookie-banner' %}
+    {% render 'custom-code-body' %}
+
+    <script src="{{ 'product-quick-view.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'compare-product.js' | asset_url }}" defer="defer"></script>
+
+    {%- if settings.enable_predictive_search -%}
+      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- if linklists['gift-wrapping'].links != blank
+      and linklists['gift-wrapping'].links.first.type == 'product_link'
+    -%}
+      <script src="{{ 'gift-wrapping.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- if settings.show_swatch_option -%}
+      <script src="{{ 'product-card-swatch.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- if settings.enable_cart_drawer and template != 'cart' -%}
+      {% render 'cart-drawer' %}
+    {%- endif -%}
+
+    {% section 'whatsapp' %}
+    
+  </body>
+</html>
