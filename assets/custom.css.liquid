@@ -2,3 +2,631 @@
   All custom CSS in this file will be kept when updating the theme
   Write your custom CSS below
 {% endcomment %}
+
+/* تصميم iOS زجاجي خفيف بدون ظلال وبانحناءات ناعمة */
+:root {
+  --ios-accent: var(--accent-color, #27d36b);
+  --ios-bg-light: linear-gradient(180deg, #f9fafc 0%, #eef1f7 100%);
+  --ios-bg-dark: linear-gradient(180deg, #05070b 0%, #0e1018 100%);
+  --ios-text-strong: #0f1115;
+  --ios-text-soft: #4c5160;
+  --ios-text-dark: #f7f8fb;
+  --glass-surface-light: var(--glass-bg-light, rgba(255, 255, 255, 0.65));
+  --glass-surface-dark: var(--glass-bg-dark, rgba(255, 255, 255, 0.08));
+  --glass-outline-color: var(--glass-outline, rgba(255, 255, 255, 0.12));
+  --glass-blur-value: var(--glass-blur, var(--glass-blur-strength, 14px));
+  --ios-radius: var(--global-radius, 14px);
+  --ios-radius-soft: max(calc(var(--ios-radius) - 4px), 6px);
+}
+
+body {
+  background: var(--ios-bg-light);
+  color: var(--ios-text-strong);
+  font-family: var(--font-stack-body, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  line-height: 1.6;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--ios-bg-dark);
+    color: var(--ios-text-dark);
+  }
+}
+
+.ios-glass-mode body {
+  background: var(--ios-bg-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode body {
+    background: var(--ios-bg-dark);
+  }
+}
+
+/* خلفيات زجاجية عامة */
+.ios-glass-mode .glass-surface,
+.ios-glass-mode .glass-panel,
+.ios-glass-mode .glass-bar,
+.glass-shell {
+  background: var(--glass-surface-light);
+  backdrop-filter: blur(var(--glass-blur-value));
+  -webkit-backdrop-filter: blur(var(--glass-blur-value));
+  border: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .glass-surface,
+  .ios-glass-mode .glass-panel,
+  .ios-glass-mode .glass-bar,
+  .glass-shell {
+    background: var(--glass-surface-dark);
+    border-color: var(--glass-outline-color);
+  }
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .ios-glass-mode .glass-surface,
+  .ios-glass-mode .glass-panel,
+  .ios-glass-mode .glass-bar,
+  .glass-shell {
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .ios-glass-mode .glass-surface,
+    .ios-glass-mode .glass-panel,
+    .ios-glass-mode .glass-bar,
+    .glass-shell {
+      background: rgba(20, 22, 30, 0.82);
+    }
+  }
+}
+
+/* هيدر زجاجي ثابت */
+.m-header__wrapper,
+header,
+.header,
+.m-topbar,
+.toolbar,
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--glass-surface-light);
+  backdrop-filter: blur(calc(var(--glass-blur-value) * 0.8));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur-value) * 0.8));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 0 0 var(--ios-radius) var(--ios-radius);
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .m-header__wrapper,
+  header,
+  .header,
+  .m-topbar,
+  .toolbar,
+  .topbar {
+    background: var(--glass-surface-dark);
+    border-bottom: 1px solid var(--glass-outline-color);
+  }
+}
+
+.m-header__main,
+.m-header__desktop,
+.m-header__mobile,
+.m-header__container,
+.m-header__actions {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  gap: 1.25rem;
+}
+
+.m-topbar {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  border-radius: 0;
+}
+
+/* تخطيط المسافات بين الأقسام */
+.shopify-section {
+  padding-block: clamp(28px, 4vw, 60px);
+  border: none;
+}
+
+.section-header,
+.section-footer,
+.section-block,
+.section-wrapper {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* البطاقات والمنتجات بدون حواف صلبة */
+.sf__card,
+.m-product-card,
+.card,
+.collection-sidebar,
+.sidebar,
+.drawer,
+.drawer__inner,
+.m-product-card__inner,
+.filters-toolbar,
+.facet-filters,
+.price-range,
+.tags-filter,
+.m-collection-sidebar,
+.m-blog-card,
+.m-article-card,
+.m-collection-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  transition: transform 220ms ease;
+}
+
+.ios-glass-mode .sf__card,
+.ios-glass-mode .m-product-card,
+.ios-glass-mode .m-collection-card,
+.ios-glass-mode .collection-sidebar,
+.ios-glass-mode .drawer,
+.ios-glass-mode .filters-toolbar,
+.ios-glass-mode .facet-filters,
+.ios-glass-mode .m-collection-sidebar {
+  background: var(--glass-surface-light);
+  padding: clamp(12px, 2vw, 18px);
+  border-radius: var(--ios-radius);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(var(--glass-blur-value));
+  -webkit-backdrop-filter: blur(var(--glass-blur-value));
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .sf__card,
+  .ios-glass-mode .m-product-card,
+  .ios-glass-mode .m-collection-card,
+  .ios-glass-mode .collection-sidebar,
+  .ios-glass-mode .drawer,
+  .ios-glass-mode .filters-toolbar,
+  .ios-glass-mode .facet-filters,
+  .ios-glass-mode .m-collection-sidebar {
+    background: var(--glass-surface-dark);
+    border-color: var(--glass-outline-color);
+  }
+}
+
+/* بطاقات المنتجات المبسطة */
+.m-product-card__inner,
+.m-collection-card__inner,
+.sf__card-content {
+  display: grid;
+  gap: 10px;
+  background: transparent;
+}
+
+.m-product-card__media,
+.m-product-card__media img,
+.m-product-card__main-image,
+.m-product-card__hover-image,
+.m-collection-card__image,
+.m-article-card__image,
+.sf__card img,
+.product__media img {
+  border-radius: var(--ios-radius);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.m-product-card__name,
+.m-product-card__title,
+.m-product-card__price,
+.price,
+.m-price,
+.product-price {
+  color: inherit;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.m-product-card__meta,
+.m-product-card__footer,
+.m-collection-card__content {
+  display: grid;
+  gap: 6px;
+  background: transparent;
+  padding-inline: 4px;
+}
+
+.ios-glass-mode .m-product-card__footer,
+.ios-glass-mode .m-collection-card__content {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.55) 100%);
+  backdrop-filter: blur(calc(var(--glass-blur-value) * 0.6));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur-value) * 0.6));
+  border-radius: var(--ios-radius);
+  padding: 12px 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .m-product-card__footer,
+  .ios-glass-mode .m-collection-card__content {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.08) 100%);
+  }
+}
+
+/* شبكة المنتجات والفلاتر */
+.filters-toolbar,
+.facet-filters,
+.collection-toolbar,
+.collection-header,
+.collection-filters {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  gap: 10px;
+  padding: 12px 0;
+}
+
+.ios-glass-mode .filters-toolbar,
+.ios-glass-mode .facet-filters,
+.ios-glass-mode .collection-toolbar,
+.ios-glass-mode .collection-filters {
+  background: var(--glass-surface-light);
+  border-radius: var(--ios-radius);
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(var(--glass-blur-value));
+  -webkit-backdrop-filter: blur(var(--glass-blur-value));
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .filters-toolbar,
+  .ios-glass-mode .facet-filters,
+  .ios-glass-mode .collection-toolbar,
+  .ios-glass-mode .collection-filters {
+    border-color: var(--glass-outline-color);
+    background: var(--glass-surface-dark);
+  }
+}
+
+/* صفحة المنتج */
+.product__media-wrapper,
+.product__info-wrapper,
+.product__blocks {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.ios-glass-mode .product__info-wrapper {
+  background: var(--glass-surface-light);
+  padding: clamp(16px, 3vw, 28px);
+  border-radius: var(--ios-radius);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(calc(var(--glass-blur-value) * 0.9));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur-value) * 0.9));
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-glass-mode .product__info-wrapper {
+    background: var(--glass-surface-dark);
+    border-color: var(--glass-outline-color);
+  }
+}
+
+.product-form__buttons,
+.product__payment-container {
+  gap: 10px;
+}
+
+/* أزرار بأسلوب iOS بدون ظل */
+.btn,
+.button,
+button,
+.m-button,
+input[type="submit"],
+.sf__btn,
+.product-form__submit,
+.shopify-payment-button .shopify-payment-button__button {
+  border-radius: 999px;
+  background: var(--ios-accent);
+  color: #ffffff;
+  border: 0;
+  box-shadow: none;
+  padding: 12px 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: transform 150ms ease, background-color 150ms ease, opacity 150ms ease;
+}
+
+.btn:hover,
+.button:hover,
+button:hover,
+.m-button:hover,
+input[type="submit"]:hover,
+.sf__btn:hover,
+.product-form__submit:hover,
+.shopify-payment-button .shopify-payment-button__button:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--ios-accent) 88%, #ffffff 12%);
+}
+
+.btn:focus,
+.button:focus,
+button:focus,
+.m-button:focus,
+.sf__btn:focus {
+  outline: 2px solid rgba(39, 211, 107, 0.35);
+  outline-offset: 2px;
+}
+
+.btn:disabled,
+.button:disabled,
+button:disabled,
+.m-button:disabled,
+.sf__btn:disabled {
+  opacity: 0.6;
+  transform: none;
+}
+
+/* حقول الإدخال والفلاتر */
+input,
+select,
+textarea,
+.facet-filters__sort,
+.price-range input,
+.price-range .field__input {
+  border-radius: var(--ios-radius-soft);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  input,
+  select,
+  textarea,
+  .facet-filters__sort,
+  .price-range input,
+  .price-range .field__input {
+    border-color: var(--glass-outline-color);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--ios-text-dark);
+  }
+}
+
+/* الفواصل والحدود الطفيفة */
+hr,
+.section-separator,
+.divider {
+  border: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  hr,
+  .section-separator,
+  .divider {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* أزرار التنقل العائمة والاختصارات */
+.floating-buttons,
+.bottom-nav,
+#whatsapp-widget,
+.sf-floating-button,
+.floaty,
+.drawer__close,
+.modal__close-button {
+  background: var(--glass-surface-light);
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(var(--glass-blur-value));
+  -webkit-backdrop-filter: blur(var(--glass-blur-value));
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .floating-buttons,
+  .bottom-nav,
+  #whatsapp-widget,
+  .sf-floating-button,
+  .floaty,
+  .drawer__close,
+  .modal__close-button {
+    background: var(--glass-surface-dark);
+    border-color: var(--glass-outline-color);
+  }
+}
+
+/* نصوص العناوين */
+.section-title,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.page-title,
+.product__title {
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+/* الحركات البسيطة */
+.page-motion-enabled main,
+.page-motion-enabled .main-content {
+  animation: ios-fade-in 0.32s ease;
+}
+
+@keyframes ios-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.m-product-card:hover,
+.m-collection-card:hover,
+.sf__card:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* ضمان الاتجاه RTL */
+[dir="rtl"] .header__inline-menu,
+[dir="rtl"] .m-header__container {
+  flex-direction: row-reverse;
+}
+
+/* تصميم داشبورد بثلاثة أعمدة مع تأثير زجاجي داكن */
+.dashboard-shell {
+  --dash-bg: #05070b;
+  --dash-surface: rgba(16, 19, 26, 0.72);
+  --dash-surface-strong: rgba(21, 25, 35, 0.76);
+  --dash-text: #f7f8fb;
+  --dash-muted: #a5b1c7;
+  --dash-accent: var(--accent-color, #30e060);
+  color: var(--dash-text);
+  padding: 24px;
+  background: var(--dash-bg);
+}
+
+.dashboard-shell__inner {
+  display: grid;
+  grid-template-columns: 260px minmax(240px, 320px) 1fr;
+  gap: 18px;
+}
+
+.dashboard-shell__nav,
+.dashboard-shell__filters,
+.dashboard-shell__empty {
+  border-radius: var(--dashboard-radius, 18px);
+  background: var(--dash-surface);
+  padding: 18px;
+  color: var(--dash-text);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-shell__nav.is-blurred,
+.dashboard-shell__filters.is-blurred,
+.dashboard-shell__empty.is-blurred,
+.dashboard-card.is-blurred {
+  backdrop-filter: blur(var(--dashboard-blur, 10px));
+  -webkit-backdrop-filter: blur(var(--dashboard-blur, 10px));
+}
+
+.dashboard-shell__brand-title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.dashboard-shell__brand-sub {
+  color: var(--dash-muted);
+  font-size: 14px;
+}
+
+.dashboard-shell__nav-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.dashboard-shell__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: calc(var(--dashboard-radius, 18px) - 6px);
+  color: var(--dash-text);
+  background: var(--dash-surface-strong);
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.dashboard-shell__nav-link:hover {
+  background: rgba(48, 224, 96, 0.14);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.dashboard-shell__filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dashboard-shell__filters-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-shell__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.dashboard-shell__muted {
+  color: var(--dash-muted);
+  font-size: 14px;
+}
+
+.dashboard-shell__custom-filter {
+  padding: 12px;
+  border-radius: calc(var(--dashboard-radius, 18px) - 8px);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.dashboard-shell__content {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.dashboard-shell__grid {
+  background: transparent;
+  border-radius: var(--dashboard-radius, 18px);
+}
+
+.dashboard-shell__products {
+  display: grid;
+  gap: var(--dashboard-gap, 18px);
+  grid-template-columns: repeat(var(--dashboard-cols-desktop, 4), minmax(0, 1fr));
+}
+
+@media (max-width: 1024px) {
+  .dashboard-shell__inner {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-shell__content {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-shell__products {
+    grid-template-columns: repeat(var(--dashboard-cols-mobile, 1), minmax(0, 1fr));
+  }
+}
+
+.dashboard-card {
+  border-radius: calc(var(--dashboard-radius, 18px) - 4px);
+  overflow: hidden;
+  background: var(--dash-surface-strong);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  transition: transform 180ms ease;
+}
+
+.dashboard-shell__pagination {
+  margin-top: 16px;
+  text-align: center;
+}
